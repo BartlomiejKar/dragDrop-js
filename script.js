@@ -15,15 +15,56 @@ const cancelInputButton = document.querySelector(".input_button-cancel");
 
 // List
 
-const backlogItem = document.querySelectorAll(".list_item-backlog");
-const progressItem = document.querySelectorAll(".list_item-progress");
-const completeItem = document.querySelectorAll(".list_item-complete");
-const onHoldItem = document.querySelectorAll(".list_item-onhold");
+// const backlogItem = document.querySelectorAll(".list_item-backlog");
+// const progressItem = document.querySelectorAll(".list_item-progress");
+// const completeItem = document.querySelectorAll(".list_item-complete");
+// const onHoldItem = document.querySelectorAll(".list_item-onhold");
+const backlogItem = document.getElementById("backlog_ul");
+const progressItem = document.getElementById("progress_ul");
+const completeItem = document.getElementById("complete_ul");
+const onHoldItem = document.getElementById("onhold_ul");
 
 // Input
 
-const input = document.getElementById("input")
-const inputContainer = document.querySelector(".container_input")
+const input = document.getElementById("input");
+const inputContainer = document.querySelector(".container_input");
+
+//Array with Tasks
+const backlogTasks = ["zadanie backlog"];
+const progressTasks = ["zadanie progress"];
+const completeTasks = ["zadanie complete"];
+const onholdTasks = ["zadanie onhold"];
+
+
+// Map Array
+
+const arrayBacklogTasks = backlogTasks.map(el => {
+    const list = document.createElement("li");
+    list.classList.add("list_item-backlog");
+    list.textContent = el;
+    backlogItem.appendChild(list)
+});
+
+const arrayProgressTasks = progressTasks.map(el => {
+    const list = document.createElement("li");
+    list.classList.add("list_item-progress");
+    list.textContent = el;
+    progressItem.appendChild(list)
+});
+
+const arrayCompleteTasks = completeTasks.map(el => {
+    const list = document.createElement("li");
+    list.classList.add("list_item-complete");
+    list.textContent = el;
+    completeItem.appendChild(list)
+});
+
+const arrayOnholdTasks = onholdTasks.map(el => {
+    const list = document.createElement("li");
+    list.classList.add("list_item-onhold");
+    list.textContent = el;
+    onHoldItem.appendChild(list)
+})
 
 
 addTaskInputButton = (e) => {
