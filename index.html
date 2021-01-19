@@ -11,50 +11,38 @@
 <body>
     <h1 class="main-title">Kanban</h1>
     <div class="drag_container">
-        <div class="list_container">
+        <div class="list_container list_container-backlog">
             <h2 class="list_title backlog">Backlog</h2>
-            <ul>
-                <li class="list_item-backlog"> zadanie 1</li>
-                <li class="list_item-backlog"> zadanie 1</li>
-                <li class="list_item-backlog"> zadanie 1</li>
-                <li class="list_item-backlog"> zadanie 1</li>
+            <ul id="backlog_ul">
+                <!--li elements by map method-->
             </ul>
             <button class="add_task-button button_backlog">+ Add task</button>
         </div>
-        <div class="list_container">
+        <div class="list_container list_container-progress">
             <h2 class="list_title progress">Progress</h2>
-            <ul>
-                <li class="list_item-progress"> zadanie 1</li>
-                <li class="list_item-progress"> zadanie 1</li>
-                <li class="list_item-progress"> zadanie 1</li>
-                <li class="list_item-progress"> zadanie 1</li>
+            <ul id="progress_ul">
+                <!--li elements by map method-->
             </ul>
             <button class="add_task-button button_progress">+ Add task</button>
         </div>
-        <div class="list_container">
+        <div class="list_container list_container-complete">
             <h2 class="list_title complete">Complete</h2>
-            <ul>
-                <li class="list_item-complete"> zadanie 1</li>
-                <li class="list_item-complete"> zadanie 1</li>
-                <li class="list_item-complete"> zadanie 1</li>
-                <li class="list_item-complete"> zadanie 1</li>
+            <ul id="complete_ul">
+                <!--li elements by map method-->
             </ul>
             <button class="add_task-button button_complete">+ Add task</button>
         </div>
-        <div class="list_container">
+        <div class="list_container list_container-onhold">
             <h2 class="list_title on-hold">On hold</h2>
-            <ul>
-                <li class="list_item-onhold"> zadanie 1</li>
-                <li class="list_item-onhold"> zadanie 1</li>
-                <li class="list_item-onhold"> zadanie 1</li>
-                <li class="list_item-onhold"> zadanie 1</li>
+            <ul id="onhold_ul">
+                <!--li elements by map method-->
             </ul>
             <button class="add_task-button button_onhold">+ Add task</button>
         </div>
     </div>
     <div class="container_input remove_container-input">
-        <h3>Dodaj zadanie</h3>
-        <input type="text" />
+        <span>Dodaj zadanie</span>
+        <input type="text" id="input" placeholder="wpisz zadanie" />
         <button class="input_button-add">Dodaj</button>
         <button class="input_button-cancel">Anuluj</button>
     </div>
