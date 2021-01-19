@@ -4,14 +4,11 @@ const progressContainer = document.querySelector(".list_container-progress");
 const completeContainer = document.querySelector(".list_container-complete");
 const onHoldContainer = document.querySelector(".list_container-onhold");
 
+
+
 // Buttons
 
 const addButton = document.querySelectorAll(".add_task-button");
-const addInputButton = document.querySelector(".input_button-add");
-const cancelInputButton = document.querySelector(".input_button-cancel");
-
-
-
 
 // List
 
@@ -24,10 +21,13 @@ const progressItem = document.getElementById("progress_ul");
 const completeItem = document.getElementById("complete_ul");
 const onHoldItem = document.getElementById("onhold_ul");
 
+
 // Input
 
 const input = document.getElementById("input");
 const inputContainer = document.querySelector(".container_input");
+const addInputButton = document.querySelector(".input_button-add");
+const cancelInputButton = document.querySelector(".input_button-cancel");
 
 //Array with Tasks
 const backlogTasks = ["zadanie backlog"];
@@ -37,6 +37,7 @@ const onholdTasks = ["zadanie onhold"];
 
 
 // Map Array
+
 
 const arrayBacklogTasks = backlogTasks.map(el => {
     const list = document.createElement("li");
@@ -66,13 +67,20 @@ const arrayOnholdTasks = onholdTasks.map(el => {
     onHoldItem.appendChild(list)
 })
 
+// Functions
 
-addTaskInputButton = (e) => {
-    e.preventDefault();
-    let value = input.value
-    console.log(value);
-    value = "";
+createLiElement = ({ valueInput, parentElement }) => {
+    const li = document.createElement("li");
+    li.textContent = valueInput;
+    parentElement.appendChild(li);
+}
 
+addTaskToArray = () => {
+    const valueInput = input.value;
+    const parentElement = inputContainer.parentNode.childNodes[3];
+    console.log(parentElement)
+    createLiElement({ valueInput, parentElement })
+    input.value = "";
 }
 
 disabledButtons = () => {
@@ -128,7 +136,8 @@ const buttons = addButton.forEach(button => {
 })
 
 cancelInputButton.addEventListener("click", toggleInputContainer);
-input.addEventListener("input", addTaskInputButton)
 
-// addInputButton.addEventListener("onChange", addTaskInputButton)
+addInputButton.addEventListener("click", addTaskToArray);
+
+
 
