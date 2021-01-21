@@ -16,28 +16,28 @@
             <ul id="backlog_ul">
                 <!--li elements by map method-->
             </ul>
-            <button class="add_task-button button_backlog">+ Add task</button>
+            <button onclick="addTaskToContainer(0)" class="add_task-button button_backlog">+ Add task</button>
         </div>
         <div class="list_container list_container-progress">
             <h2 class="list_title progress">Progress</h2>
             <ul id="progress_ul">
                 <!--li elements by map method-->
             </ul>
-            <button class="add_task-button button_progress">+ Add task</button>
+            <button onclick="addTaskToContainer(1)" class=add_task-button button_progress">+ Add task</button>
         </div>
         <div class="list_container list_container-complete">
             <h2 class="list_title complete">Complete</h2>
             <ul id="complete_ul">
                 <!--li elements by map method-->
             </ul>
-            <button class="add_task-button button_complete">+ Add task</button>
+            <button onclick="addTaskToContainer(2)" class="add_task-button button_complete">+ Add task</button>
         </div>
         <div class="list_container list_container-onhold">
             <h2 class="list_title on-hold">On hold</h2>
             <ul id="onhold_ul">
                 <!--li elements by map method-->
             </ul>
-            <button class="add_task-button button_onhold">+ Add task</button>
+            <button onclick="addTaskToContainer(3)" class="add_task-button button_onhold">+ Add task</button>
         </div>
     </div>
     <div class="container_input remove_container-input">
@@ -46,7 +46,7 @@
         <button class="input_button-add">Dodaj</button>
         <button class="input_button-cancel">Anuluj</button>
     </div>
-    <script src="script.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
