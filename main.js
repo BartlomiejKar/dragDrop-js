@@ -1,7 +1,8 @@
 
 
 // Buttons 
-const addButton = document.querySelectorAll(".add_task-button")
+const addButton = document.querySelectorAll(".add_task-button");
+
 
 //Container Tasks
 const backlogContainer = document.querySelector(".list_container-backlog");
@@ -12,6 +13,10 @@ const onHoldContainer = document.querySelector(".list_container-onhold");
 //container Input 
 
 const inputContainer = document.querySelector(".container_input");
+const cancelInputButton = document.querySelector(".input_button-cancel");
+const addInputButton = document.querySelector(".input_button-add");
+const input = document.getElementById("input");
+
 
 //Array with tasks
 
@@ -24,6 +29,13 @@ const onholdTasks = ["zadanie onhold"];
 //Disabled buttons
 disabledButtons = () => {
     addButton.forEach(el => el.disabled ? el.disabled = false : el.disabled = true)
+}
+
+// helpful Function
+createLiElement = ({ value, parentElement }) => {
+    const li = document.createElement("li");
+    li.textContent = value;
+    parentElement.appendChild(li);
 }
 
 // Toggle Input 
@@ -66,10 +78,31 @@ const addTaskToContainer = (number) => {
 }
 
 
+cancelButton = () => {
+    toggleInput();
+    disabledButtons();
+}
 
+
+addTaskInputToArray = (e) => {
+    e.preventDefault();
+    const value = input.value;
+    const parentElement = inputContainer.parentNode.childNodes[3];
+    createLiElement({ value, parentElement });
+
+    input.value = "";
+    toggleInput();
+    disabledButtons();
+
+
+}
 
 // EventLsitener
 
+cancelInputButton.addEventListener("click", cancelButton);
+
+
+addInputButton.addEventListener("click", addTaskInputToArray)
 
 
 
