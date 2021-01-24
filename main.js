@@ -33,7 +33,7 @@ disabledButtons = () => {
 createLiElement = ({ value, parentElement }) => {
     const button = document.createElement("button");
     button.setAttribute("id", "deleteTask");
-    button.setAttribute("onclick", `deleteTask()`)
+    button.setAttribute("onclick", `return this.parentNode.remove()`)
     const img = document.createElement("img");
     img.setAttribute("src", "/image/delete.svg")
     button.appendChild(img)
@@ -43,7 +43,10 @@ createLiElement = ({ value, parentElement }) => {
     parentElement.appendChild(li);
 }
 
-
+// deleteTask = () => {
+//     console.log("click");
+//     parentNode.remove();
+// }
 // Toggle Input 
 
 const toggleInput = () => {
