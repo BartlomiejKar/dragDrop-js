@@ -4,6 +4,13 @@
 const addButton = document.querySelectorAll(".add_task-button");
 
 
+//List of Tasks
+
+
+
+
+
+
 //Container Tasks
 const backlogContainer = document.querySelector(".list_container-backlog");
 const progressContainer = document.querySelector(".list_container-progress");
@@ -53,6 +60,14 @@ const toggleInput = () => {
 
 //Functions 
 
+getElementsLi = () => {
+    TasksList = [];
+    let tasksLi = document.getElementsByTagName("li");
+    let arrayLi = [...tasksLi];
+    TasksList = arrayLi;
+    // console.log(TasksList)
+};
+
 
 
 const addTaskToContainer = (number) => {
@@ -81,6 +96,7 @@ const addTaskToContainer = (number) => {
 cancelButton = () => {
     toggleInput();
     disabledButtons();
+    input.value = ""
 }
 
 
@@ -88,14 +104,22 @@ addTaskInputToArray = (e) => {
     e.preventDefault();
     const value = input.value;
     const parentElement = inputContainer.parentNode.childNodes[3];
-    createLiElement({ value, parentElement });
-
-    input.value = "";
-    toggleInput();
-    disabledButtons();
-
-
+    if (value.length >= 1) {
+        createLiElement({ value, parentElement });
+        input.value = "";
+        toggleInput();
+        disabledButtons();
+        getElementsLi()
+    }
 }
+
+
+deleteTask = () => {
+    getElementsLi()
+    console.log(`klik`)
+}
+
+
 
 // EventLsitener
 
