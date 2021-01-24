@@ -4,11 +4,8 @@
 const addButton = document.querySelectorAll(".add_task-button");
 
 
+
 //List of Tasks
-
-
-
-
 
 
 //Container Tasks
@@ -25,12 +22,6 @@ const addInputButton = document.querySelector(".input_button-add");
 const input = document.getElementById("input");
 
 
-//Array with tasks
-
-const backlogTasks = ["zadanie backlog"];
-const progressTasks = ["zadanie progress"];
-const completeTasks = ["zadanie complete"];
-const onholdTasks = ["zadanie onhold"];
 
 
 //Disabled buttons
@@ -40,10 +31,18 @@ disabledButtons = () => {
 
 // helpful Function
 createLiElement = ({ value, parentElement }) => {
+    const button = document.createElement("button");
+    button.setAttribute("id", "deleteTask");
+    button.setAttribute("onclick", `deleteTask()`)
+    const img = document.createElement("img");
+    img.setAttribute("src", "/image/delete.svg")
+    button.appendChild(img)
     const li = document.createElement("li");
     li.textContent = value;
+    li.appendChild(button);
     parentElement.appendChild(li);
 }
+
 
 // Toggle Input 
 
@@ -61,11 +60,11 @@ const toggleInput = () => {
 //Functions 
 
 getElementsLi = () => {
-    TasksList = [];
     let tasksLi = document.getElementsByTagName("li");
-    let arrayLi = [...tasksLi];
-    TasksList = arrayLi;
-    // console.log(TasksList)
+    liElements = [...tasksLi];
+
+    return liElements;
+
 };
 
 
@@ -111,12 +110,6 @@ addTaskInputToArray = (e) => {
         disabledButtons();
         getElementsLi()
     }
-}
-
-
-deleteTask = () => {
-    getElementsLi()
-    console.log(`klik`)
 }
 
 
