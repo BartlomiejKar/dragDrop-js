@@ -3,11 +3,9 @@
 // Buttons 
 const addButton = document.querySelectorAll(".add_task-button");
 
+//ul List
 
-
-//List of Tasks
-
-
+const ListUl = document.querySelectorAll("ul");
 //Container Tasks
 const backlogContainer = document.querySelector(".list_container-backlog");
 const progressContainer = document.querySelector(".list_container-progress");
@@ -29,24 +27,59 @@ disabledButtons = () => {
     addButton.forEach(el => el.disabled ? el.disabled = false : el.disabled = true)
 }
 
+
+ondragstart = (task) => {
+    console.log(`dragstart ${task}`)
+}
+ondragend = (task) => {
+    console.log(`dragend ${task}`);
+}
+getAllElementsLI = () => {
+    const li = document.querySelectorAll("li");
+    const arrayLi = Array.from(li);
+
+    for (const task of arrayLi) {
+        console.log(task)
+        task.addEventListener("dragstart", () => ondragstart(task));
+        task.addEventListener("dragend", () => ondragend(task));
+
+    }
+}
+
+dragOver = (e) => {
+    e.preventDefault();
+    console.log("dragover");
+};
+dragEnter = () => {
+    console.log("dragenter")
+};
+dragLeave = () => {
+    console.log("dragelave")
+};
+
+for (const element of ListUl) {
+    element.addEventListener("dragover", dragOver);
+    element.addEventListener("dragenter", dragEnter);
+    element.addEventListener("dragleave", dragLeave);
+}
+
+
 // helpful Function
 createLiElement = ({ value, parentElement }) => {
     const button = document.createElement("button");
     button.setAttribute("id", "deleteTask");
-    button.setAttribute("onclick", `return this.parentNode.remove()`)
+    button.setAttribute("onclick", `this.parentNode.remove()`);
     const img = document.createElement("img");
     img.setAttribute("src", "/image/delete.svg")
     button.appendChild(img)
     const li = document.createElement("li");
+    li.setAttribute("draggable", "true")
     li.textContent = value;
     li.appendChild(button);
     parentElement.appendChild(li);
+    getAllElementsLI();
 }
 
-// deleteTask = () => {
-//     console.log("click");
-//     parentNode.remove();
-// }
 // Toggle Input 
 
 const toggleInput = () => {
