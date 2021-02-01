@@ -28,42 +28,75 @@ disabledButtons = () => {
 }
 
 
-ondragstart = (task) => {
-    console.log(`dragstart ${task}`)
-}
-ondragend = (task) => {
-    console.log(`dragend ${task}`);
-}
-getAllElementsLI = () => {
-    const li = document.querySelectorAll("li");
-    const arrayLi = Array.from(li);
+// ondragstart = (e) => {
+//     console.log(e.target)
+//     console.log(`dragstart`)
+// }
+// ondragend = (task) => {
+//     console.log(`dragend ${task}`);
+// }
+// getAllElementsLI = () => {
+//     const li = document.querySelectorAll("li");
+//     const arrayLi = Array.from(li);
 
-    for (const task of arrayLi) {
-        console.log(task)
-        task.addEventListener("dragstart", () => ondragstart(task));
-        task.addEventListener("dragend", () => ondragend(task));
+//     for (const task of arrayLi) {
+//         task.addEventListener("dragstart", ondragstart);
+//         // task.addEventListener("dragend", () => ondragend(task));
 
-    }
-}
+//     }
+// }
 
-dragOver = (e) => {
-    e.preventDefault();
-    console.log("dragover");
-};
-dragEnter = () => {
-    console.log("dragenter")
-};
-dragLeave = () => {
-    console.log("dragelave")
-};
+// dragOver = (e) => {
+//     e.preventDefault();
+//     console.log(e.target)
+//     console.log("dragover");
+// };
+// dragEnter = () => {
+//     console.log("dragenter")
+// };
+// dragLeave = () => {
+//     console.log("dragelave")
+// };
+// dropEnd = () => {
+//     console.log("hej")
+// }
 
 for (const element of ListUl) {
-    element.addEventListener("dragover", dragOver);
-    element.addEventListener("dragenter", dragEnter);
-    element.addEventListener("dragleave", dragLeave);
+    // element.addEventListener("drop", dropEnd)
+    // element.addEventListener("dragover", dragOver);
+    // element.addEventListener("dragenter", dragEnter);
+    // element.addEventListener("dragleave", dragLeave);
 }
 
+//Global variables for Drag and drop elements
+let dragItem;
+let currentColumn;
 
+
+drag = (e) => {
+    dragItem = e.target;
+}
+
+allowDrop = (e) => {
+    e.preventDefault();
+}
+
+drop = (e) => {
+    e.preventDefault();
+    // remove background color and paddings
+    ListUl.forEach(el => {
+        el.classList.remove("over")
+    })
+
+    //add Task do Ul
+
+    const parent = ListUl[currentColumn];
+    parent.appendChild(dragItem);
+}
+dragEnter = (column) => {
+    ListUl[column].classList.add("over");
+    currentColumn = column;
+}
 // helpful Function
 createLiElement = ({ value, parentElement }) => {
     const button = document.createElement("button");
@@ -73,11 +106,13 @@ createLiElement = ({ value, parentElement }) => {
     img.setAttribute("src", "/image/delete.svg")
     button.appendChild(img)
     const li = document.createElement("li");
-    li.setAttribute("draggable", "true")
+    // li.setAttribute("draggable", "true");
+    li.draggable = true;
+    li.setAttribute("ondragstart", "drag(event)");
     li.textContent = value;
     li.appendChild(button);
     parentElement.appendChild(li);
-    getAllElementsLI();
+    // getAllElementsLI();
 }
 
 // Toggle Input 
