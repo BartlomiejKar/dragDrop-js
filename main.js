@@ -2,24 +2,18 @@
 
 // Buttons 
 const addButton = document.querySelectorAll(".add_task-button");
-
 //ul List
-
 const ListUl = document.querySelectorAll("ul");
 //Container Tasks
 const backlogContainer = document.querySelector(".list_container-backlog");
 const progressContainer = document.querySelector(".list_container-progress");
 const completeContainer = document.querySelector(".list_container-complete");
 const onHoldContainer = document.querySelector(".list_container-onhold");
-
 //container Input 
-
 const inputContainer = document.querySelector(".container_input");
 const cancelInputButton = document.querySelector(".input_button-cancel");
 const addInputButton = document.querySelector(".input_button-add");
 const input = document.getElementById("input");
-
-
 
 
 //Disabled buttons
@@ -28,51 +22,11 @@ disabledButtons = () => {
 }
 
 
-// ondragstart = (e) => {
-//     console.log(e.target)
-//     console.log(`dragstart`)
-// }
-// ondragend = (task) => {
-//     console.log(`dragend ${task}`);
-// }
-// getAllElementsLI = () => {
-//     const li = document.querySelectorAll("li");
-//     const arrayLi = Array.from(li);
-
-//     for (const task of arrayLi) {
-//         task.addEventListener("dragstart", ondragstart);
-//         // task.addEventListener("dragend", () => ondragend(task));
-
-//     }
-// }
-
-// dragOver = (e) => {
-//     e.preventDefault();
-//     console.log(e.target)
-//     console.log("dragover");
-// };
-// dragEnter = () => {
-//     console.log("dragenter")
-// };
-// dragLeave = () => {
-//     console.log("dragelave")
-// };
-// dropEnd = () => {
-//     console.log("hej")
-// }
-
-for (const element of ListUl) {
-    // element.addEventListener("drop", dropEnd)
-    // element.addEventListener("dragover", dragOver);
-    // element.addEventListener("dragenter", dragEnter);
-    // element.addEventListener("dragleave", dragLeave);
-}
-
 //Global variables for Drag and drop elements
 let dragItem;
 let currentColumn;
 
-
+//drag and drop functions
 drag = (e) => {
     dragItem = e.target;
 }
@@ -97,7 +51,7 @@ dragEnter = (column) => {
     ListUl[column].classList.add("over");
     currentColumn = column;
 }
-// helpful Function
+// helpful Function create Task
 createLiElement = ({ value, parentElement }) => {
     const button = document.createElement("button");
     button.setAttribute("id", "deleteTask");
@@ -106,13 +60,11 @@ createLiElement = ({ value, parentElement }) => {
     img.setAttribute("src", "/image/delete.svg")
     button.appendChild(img)
     const li = document.createElement("li");
-    // li.setAttribute("draggable", "true");
     li.draggable = true;
     li.setAttribute("ondragstart", "drag(event)");
     li.textContent = value;
     li.appendChild(button);
     parentElement.appendChild(li);
-    // getAllElementsLI();
 }
 
 // Toggle Input 
@@ -129,15 +81,6 @@ const toggleInput = () => {
 }
 
 //Functions 
-
-getElementsLi = () => {
-    let tasksLi = document.getElementsByTagName("li");
-    liElements = [...tasksLi];
-
-    return liElements;
-
-};
-
 
 
 const addTaskToContainer = (number) => {
@@ -179,7 +122,6 @@ addTaskInputToArray = (e) => {
         input.value = "";
         toggleInput();
         disabledButtons();
-        getElementsLi()
     }
 }
 
