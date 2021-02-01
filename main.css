@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap");
+
+html {
+  box-sizing: border-box;
+}
+body {
+  background-color: #001e4f;
+  margin: 0;
+  color: white;
+  font-family: Quicksand, sans-serif;
+  overflow-y: hidden;
+}
+:root {
+  --column-1: #a2622d;
+  --column-2: #1b6161;
+  --column-3: #248224;
+  --column-4: #a22d22;
+}
+
+h1 {
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 5px black;
+  text-align: center;
+  font-size: 3rem;
+}
+.drag_container {
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/*column backgrounds colors */
+.backlog {
+  background-color: var(--column-1);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.progress {
+  background-color: var(--column-2);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.complete {
+  background-color: var(--column-3);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.on-hold{
+  background-color: var(--column-4);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/*input display */
+.container_input {
+  display:none
+  }
+.container_remove-input {
+   display: flex;
+  }
+
+  /*image size*/
+
+  img {
+    width: 10px;
+    height: 10px;
+  }
