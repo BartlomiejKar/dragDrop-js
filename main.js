@@ -56,6 +56,7 @@ createLiElement = ({ value, parentElement }) => {
     const button = document.createElement("button");
     button.setAttribute("id", "deleteTask");
     button.setAttribute("onclick", `this.parentNode.remove()`);
+    button.classList.add("button_task")
     const img = document.createElement("img");
     img.setAttribute("src", "/image/delete.svg")
     button.appendChild(img)

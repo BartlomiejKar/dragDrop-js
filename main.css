@@ -62,11 +62,85 @@ h1 {
   }
 .container_remove-input {
    display: flex;
+   padding: 5px;
+  }
+  #input {
+    padding: 3px;
+    border-radius: 5px;
+    border: none;
+    margin: auto 5px
+  }
+  .input_button-add{
+cursor: pointer;
+border:none;
+background-color: transparent;
+color:white;
+  }
+  .input_button-cancel{
+cursor: pointer;
+border:none;
+background-color: transparent;
+color:white;
   }
 
   /*image size*/
 
   img {
-    width: 10px;
-    height: 10px;
+    width: 13px;
+    height: 13px;
+  }
+
+  /* style task */
+
+  li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 0;
+  }
+  .button_task {
+border: none;
+color:white;
+padding: 0.5rem;
+text-align: center;
+text-decoration: none;
+background-color: white;
+border-radius: 8px;  
+cursor: pointer;
+margin: 2px;
+  }
+
+  /* container with tasks */
+
+  #complete_ul {
+    background-color: var(--column-3);
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  #backlog_ul {
+  background-color:var(--column-1);
+  border-radius: 8px;
+  padding: 10px;
+  }
+
+  #onhold_ul{
+    background-color:var(--column-4);
+    border-radius: 8px;
+    padding: 10px;
+  }
+  #progress_ul {
+    background-color:var(--column-2);
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+
+  /*add task button */
+  .add_task-button{
+    background-color: transparent;
+    color: white;
+    border:none;
+    cursor: pointer;
   }
