@@ -138,4 +138,6 @@ addInputButton.addEventListener("click", addTaskInputToArray)
 
 
 
+//local storage
 
+localStorage.setItem("tasks", "value")
